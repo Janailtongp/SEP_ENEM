@@ -14,7 +14,7 @@ Class UsuarioController{
         listar();
     }
     
-    public function ExcluirProfessor($id) {
+    public function ExcluirUsuario($id) {
         excluir($id);
         header( "Location: Usuario_listar.php");
     }

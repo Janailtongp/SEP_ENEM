@@ -6,5 +6,15 @@ class QuestaoController{
         
     }
     
+     public function EditarQuestao($enunciado, $a, $b, $c, $d, $e, $id) {
+        editarQuestao($enunciado, $a, $b, $c, $d, $e, $id);
+        
+    }
+    
+     public function ExcluirQuestao($id) {
+         excluirQuestao($id);
+        header( "Location: Questao_listar.php");
+    }
+    
     
 }
