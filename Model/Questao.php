@@ -62,7 +62,6 @@ function listarQuestaoProva() {
                         .$row['enunciado'].
                     "</div>
                     <div class='modal-footer'>
-                    <button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>
                     </div>
                     </div>
                     </div>

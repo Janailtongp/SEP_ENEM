@@ -16,8 +16,8 @@ include './Topo.phtml';
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
             <a href="blank.html" >
-                <i class="fa fa-circle-o-notch fa-5x"></i>
-                <h4>Check Data</h4>
+                <i class="fa fa-book fa-4x"></i>
+                <h4>Cadastrar Simulado</h4>
             </a>
         </div>
 
@@ -27,8 +27,8 @@ include './Topo.phtml';
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
             <a href="blank.html" >
-                <i class="fa fa-envelope-o fa-5x"></i>
-                <h4>Mail Box</h4>
+                <i class="fa fa-list fa-4x"></i>
+                <h4>Lista Simulados</h4>
             </a>
         </div>
 
@@ -37,8 +37,8 @@ include './Topo.phtml';
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
             <a href="blank.html" >
-                <i class="fa fa-lightbulb-o fa-5x"></i>
-                <h4>New Issues</h4>
+                <i class="fa fa-file-text-o fa-4x"></i>
+                <h4>Cadastrar Prova</h4>
             </a>
         </div>
 
@@ -47,8 +47,8 @@ include './Topo.phtml';
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
             <a href="blank.html" >
-                <i class="fa fa-users fa-5x"></i>
-                <h4>See Users</h4>
+                <i class="fa fa-list fa-4x"></i>
+                <h4>Listar minhas Provas</h4>
             </a>
         </div>
 
@@ -56,9 +56,9 @@ include './Topo.phtml';
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
-                <i class="fa fa-key fa-5x"></i>
-                <h4>Admin </h4>
+            <a href="Questao_Cadastrar.php" >
+                <i class="fa fa-subscript fa-4x"></i>
+                <h4>Cadasatrar Questão</h4>
             </a>
         </div>
 
@@ -66,9 +66,9 @@ include './Topo.phtml';
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
-                <i class="fa fa-comments-o fa-5x"></i>
-                <h4>Support</h4>
+            <a href="Questao_listar.php" >
+                <i class="fa fa-list fa-4x"></i>
+                <h4>Listar Questões</h4>
             </a>
         </div>
 
@@ -80,9 +80,9 @@ include './Topo.phtml';
 
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
-                <i class="fa fa-clipboard fa-5x"></i>
-                <h4>All Docs</h4>
+            <a href="Usuario_Cadastro.php" >
+                <i class="fa fa-user fa-4x"></i>
+                <h4>Cadastrar Usuário</h4>
             </a>
         </div>
 
@@ -90,9 +90,9 @@ include './Topo.phtml';
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
-                <i class="fa fa-gear fa-5x"></i>
-                <h4>Settings</h4>
+            <a href="Usuario_listar.php" >
+                <i class="fa fa-list fa-4x"></i>
+                <h4>Listar Usuários</h4>
             </a>
         </div>
 
