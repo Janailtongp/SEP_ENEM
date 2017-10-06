@@ -16,5 +16,8 @@ class QuestaoController{
         header( "Location: Questao_listar.php");
     }
     
+    public function ListarQestoesProva() {
+        listarQuestaoProva();
+    }
     
 }
