@@ -4,6 +4,15 @@ $titulo2 = 'Cadastro de simulado';
 require_once './Topo.phtml';
 ?>
 
+<?php 
+           require_once '../Controller/SimuladoController.php';
+        if(isset($_POST['cadastrar'])){
+            $objSimulado = new SimuladoController();
+            $objSimulado->CadastrarSimulado($_POST['titulo'], $_POST['descricao'], $_POST['data']);
+            
+        }
+?>
+<br/>
 <form method="post" action="">
     <div class="col-md-offset-2 col-lg-8 col-md-8 col-sm-8 col-xs-8">
         <div class="input-group">
@@ -27,6 +36,5 @@ require_once './Topo.phtml';
     
     
 </form>
-
 
 <?php require_once './Rodape.html'; ?>
