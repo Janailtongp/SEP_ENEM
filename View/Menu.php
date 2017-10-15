@@ -1,12 +1,12 @@
 <?php
-$titulo1 = 'ADMIN DASHBOARD';
-$titulo2 = 'ADMIN DASHBOARD';
+$titulo1 = 'Painel de Controle';
+$titulo2 = 'Painel de Controle';
 include './Topo.phtml';
 ?>
 <div class="row">
     <div class="col-lg-12 ">
         <div class="alert alert-info">
-            <strong>Welcome Jhon Doe ! </strong> You Have No pending Task For Today.
+            <strong>Bem vindo(a) ao SEP ENEM! </strong> Sistema de Emissão de Provas (Simulado) ENEM.
         </div>
 
     </div>
@@ -36,7 +36,7 @@ include './Topo.phtml';
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
+            <a href="Prova_Cadastro.php" >
                 <i class="fa fa-file-text-o fa-4x"></i>
                 <h4>Cadastrar Prova</h4>
             </a>
@@ -46,7 +46,7 @@ include './Topo.phtml';
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
+            <a href="Prova_listar.php" >
                 <i class="fa fa-list fa-4x"></i>
                 <h4>Listar minhas Provas</h4>
             </a>

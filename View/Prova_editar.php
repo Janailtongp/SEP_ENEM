@@ -1,28 +1,43 @@
 <?php
-$titulo1 = 'Cadastro de prova';
-$titulo2 = 'Cadastro de prova';
+$titulo1 = 'Editar Prova';
+$titulo2 = 'Editar Prova';
 require_once './Topo.phtml';
+
+if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
     include '../Controller/ProvaController.php';
     $objProva = new ProvaController();
-    if(isset($_POST['cadastrar'])){
+    $prova = $objProva->ProvaEditavel($_SESSION['idUSU'], $id);
+    $titulo = $prova[0]['TITULO'];
+    $assunto = $prova[0]['ASSUNTO'];
+    $ID_PROVA = $prova[0]['ID_PROVA'];
+} else {
+    echo "<script language= 'JavaScript'>
+                                        location.href='erro.php'
+                                </script>";
+}
+
+
+if(isset($_POST['cadastrar'])){
         
-        $objProva->CadastrarProva($_POST['titulo'], $_POST['assunto'], $_POST['id_simulado'],  $_SESSION['idUSU']);
+        $objProva->EditarProva($_POST['titulo'], $_POST['assunto'], $_POST['id_simulado'], $ID_PROVA);
         
     }
 ?>
+
 
 <form method="post" action="">
     <div class="col-md-offset-2 col-lg-8 col-md-8 col-sm-8 col-xs-8">
         <div class="input-group">
             <span class="input-group-addon">Título</span>
         </div>
-        <input type="text" class="form-control" placeholder="Título" name="titulo"/><br/>
+        <input type="text" class="form-control" placeholder="Título" name="titulo" value="<?php echo $titulo;?>"/><br/>
 
 
          <div class="input-group">
             <span class="input-group-addon">Assunto</span>
         </div>
-        <input type="text" class="form-control" placeholder="Assunto" name="assunto"/><br/>
+        <input type="text" class="form-control" placeholder="Assunto" name="assunto" value="<?php echo $assunto;?>"/><br/>
         
         
         <div class="input-group">
@@ -41,11 +56,9 @@ require_once './Topo.phtml';
         </select>
         
 
-        <input type="submit" class="btn btn-success" name="cadastrar" value="Cadastrar">
+        <input type="submit" class="btn btn-success" name="cadastrar" value="Salvar">
     </div>
     
     
 </form>
-
-
 <?php require_once './Rodape.html'; ?>
