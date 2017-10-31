@@ -23,6 +23,7 @@ require_once './Topo.phtml';
             </tbody>
             <?php
             $tamanho = count($vetor);
+            if($tamanho > 0){
                 for($i =0; $i<$tamanho; $i++){
                     echo"<tr><td>" . $vetor[$i]['TITULO']  . "</td>";
                     echo"<td>" .     $vetor[$i]['ASSUNTO'] . "</td>";
@@ -30,6 +31,7 @@ require_once './Topo.phtml';
                     echo"<td><a href=Prova_editar.php?id=" . $vetor[$i]['ID_PROVA'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
                                 <a onclick='return confirmar();' href=Prova_excluir.php?id=" . $vetor[$i]['ID_PROVA'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
                 }
+            }    
             ?>
         </table>
 

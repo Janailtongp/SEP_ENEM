@@ -18,7 +18,7 @@ function listarProvas($IDUsuario) {
     $result = mysqli_query($conn, "Select * from prova WHERE usuario_idAdmin=" . $IDUsuario);
     $i = 0;
     $provas = array();
-    if (mysqli_num_rows($result)) {
+    if (mysqli_num_rows($result)!=0) {
         while ($row = $result->fetch_assoc()) {
             $provas[$i]['TITULO'] = $row['titulo'];
             $provas[$i]['ASSUNTO'] = $row['assunto'];

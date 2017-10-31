@@ -18,18 +18,18 @@ require_once './Topo.phtml';
         <div class="input-group">
             <span class="input-group-addon">Título</span>
         </div>
-        <input type="text" class="form-control" placeholder="Título" name="titulo"/><br/>
+        <input type="text" class="form-control" placeholder="Título" name="titulo" required=""/><br/>
 
 
          <div class="input-group">
             <span class="input-group-addon">Descrição do simulado</span>
         </div>
-        <input type="text" class="form-control" placeholder="Descrição" name="descricao"/><br/>
+        <input type="text" class="form-control" placeholder="Descrição" name="descricao" required=""/><br/>
         
         <div class="input-group">
             <span class="input-group-addon">Data criação</span>
         </div>
-        <input type="date" class="form-control" name="data"/><br/>
+        <input type="date" class="form-control" name="data" required=""/><br/>
 
         <input type="submit" class="btn btn-success" name="cadastrar" value="Cadastrar">
     </div>

@@ -16,13 +16,13 @@ require_once './Topo.phtml';
         <div class="input-group">
             <span class="input-group-addon">Título</span>
         </div>
-        <input type="text" class="form-control" placeholder="Título" name="titulo"/><br/>
+        <input type="text" class="form-control" placeholder="Título" name="titulo" required=""/><br/>
 
 
          <div class="input-group">
             <span class="input-group-addon">Assunto</span>
         </div>
-        <input type="text" class="form-control" placeholder="Assunto" name="assunto"/><br/>
+        <input type="text" class="form-control" placeholder="Assunto" name="assunto" required=""/><br/>
         
         
         <div class="input-group">
