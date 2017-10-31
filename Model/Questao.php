@@ -95,8 +95,10 @@ function excluirQuestao($id) {
 
     $sql = "DELETE FROM questao WHERE idQuestao = " . $id;
 
-    $conn->query($sql);
-
+    if($conn->query($sql)){
+        $sql2 = "DELETE FROM alternativa WHERE Questao_idQuestao=" . $id;
+        $conn->query($sql2);
+    }
     $conn->close();
 }
 
