@@ -6,7 +6,7 @@
     if (isset($_GET['id'])){
                     $id = (int)$_GET['id'];
                     $conn = F_conect();
-                    $result = mysqli_query($conn, "Select * from usuario where idusuario=" . $id);
+                    $result = mysqli_query($conn, "Select * from usuario where idAdmin=" . $id);
                       if (mysqli_num_rows($result) >=1){
                             while ($row = $result->fetch_assoc()) {
                                 $nome=$row['nome'];

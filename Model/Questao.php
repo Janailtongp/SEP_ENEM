@@ -1,6 +1,6 @@
 <?php
 
-function cadastrarQuestao($enunciado) {
+function cadastrarQuestao($enunciado){
     $conn = F_conect();
     $sql = "INSERT INTO questao(enunciado) VALUES('" . $enunciado . "')";
     if ($conn->query($sql) == TRUE) {
@@ -13,7 +13,7 @@ function cadastrarQuestao($enunciado) {
     return $last;
 }
 
-function cadastrarAlternativa($idQuestao, $alternativas, $correta) {
+function cadastrarAlternativa($idQuestao, $alternativas, $correta){
     $conn = F_conect();
     $cont = 0;
     $resp = 0;
@@ -102,38 +102,20 @@ function excluirQuestao($id) {
     $conn->close();
 }
 
-function listarQuestaoProva() {
+function listarQuestao() {
     $conn = F_conect();
     $result = mysqli_query($conn, "Select left(enunciado, 200)KK, disciplina, idQuestao, enunciado from questao");
-
+    $vetor = array();
+    $i=0;
     if (mysqli_num_rows($result)) {
         while ($row = $result->fetch_assoc()) {
-            echo "<tr><td><input type='checkbox' name='Quest[]' value='" . $row['idQuestao'] . "'></td>";
-            echo"<td>" . $row['KK'] . "</td>";
-            echo"<td>" . $row['disciplina'] . "</td>";
-            echo"<td>
-                    <button type='button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#myModal" . $row['idQuestao'] . "'>
-                    <span class='glyphicon glyphicon-eye-open'></span>
-                    </button>
-
-                    <div class='modal fade' id='myModal" . $row['idQuestao'] . "' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-                    <div class='modal-dialog' role='document'>
-                    <div class='modal-content'>
-                    <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                    <h4 class='modal-title' id='myModalLabel'>Enunciado Completo</h4>
-                    </div>
-                    <div class='modal-body'>"
-            . $row['enunciado'] .
-            "</div>
-                    <div class='modal-footer'>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-
-            </td></tr>";
+            $vetor[$i]['idQuestao'] = $row['idQuestao'];
+            $vetor[$i]['preview'] = $row['KK'];
+            $vetor[$i]['disciplina'] = $row['disciplina'];
+            $vetor[$i]['enunciado'] = $row['enunciado'];
+            $i++;
         }
     }
     $conn->close();
+    return $vetor;
 }

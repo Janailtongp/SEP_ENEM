@@ -20,8 +20,8 @@ function listar() {
         while ($row = $result->fetch_assoc()) {
             echo"<tr><td>" . $row['nome'] . "</td>";
             echo"<td>" . $row['email'] . "</td>";
-            echo"<td><a href=Usuario_editar.php?id=" . $row['idusuario'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
-                        <a onclick='return confirmar();' href=Usuario_excluir.php?id=" . $row['idusuario'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
+            echo"<td><a href=Usuario_editar.php?id=" . $row['idAdmin'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
+                        <a onclick='return confirmar();' href=Usuario_excluir.php?id=" . $row['idAdmin'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
         }
     }
     $conn->close();
@@ -44,7 +44,7 @@ function excluir($id) {
 
     $conn = F_conect();
 
-    $sql = "DELETE FROM usuario WHERE idusuario = ".$id." AND nivel = 1";
+    $sql = "DELETE FROM usuario WHERE idAdmin = ".$id." AND nivel = 1";
 
     $conn->query($sql);
 
