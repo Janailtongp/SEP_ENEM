@@ -1,6 +1,6 @@
 <?php
-$titulo1 = 'Listar usuários';
-$titulo2 = 'Lista de usuários';
+$titulo1 = 'Listar Questões';
+$titulo2 = 'Listar Questões';
 require_once './Topo.phtml';
 ?>
 
@@ -9,8 +9,7 @@ require_once './Topo.phtml';
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>Enunciado</th>
+                    <th>Resumo</th>
                     <th>Disciplina</th>
                     <th></th>
                 </tr>
@@ -20,11 +19,21 @@ require_once './Topo.phtml';
                 <?php
                 require '../Controller/QuestaoController.php';
                 $obj = new QuestaoController();
-                $obj->ListarQestoesProva();
+                $vetor = $obj->ListarQestoes();
                 ?>
             </tbody>
+             <?php
+            $tamanho = count($vetor);
+            if($tamanho > 0){
+                for($i =0; $i<$tamanho; $i++){
+                    echo"<tr><td>" . $vetor[$i]['preview']  . "</td>";
+                    echo"<td>" .     $vetor[$i]['disciplina'] . "</td>";
+                    echo"<td><a href=Questao_editar.php?id=" . $vetor[$i]['idQuestao'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
+                                <a onclick='return confirmar();' href=Questao_excluir.php?id=" . $vetor[$i]['idQuestao'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
+                }
+            }    
+            ?>
         </table>
-        <input type="submit" class="btn btn-success" name="cadastrar" value="Adicionar a Prova"> 
     </form>
 </div>
 <?php require_once './Rodape.html'; ?>

@@ -3,29 +3,19 @@
     $titulo2 = 'Editar Simulado';
     require_once './Topo.phtml';
     
-    if (isset($_GET['id'])){
-                    $id = (int)$_GET['id'];
-                    $conn = F_conect();
-                    $result = mysqli_query($conn, "Select * from simulado where idsimulado=" . $id);
-                      if (mysqli_num_rows($result) >=1){
-                            while ($row = $result->fetch_assoc()) {
-                                $titulo=$row['titulo'];
-                                $data=$row['data_'];
-                                $descricao=$row['descricao'];
-                             }
-                      }else{
-                         
-                          echo "<script language= 'JavaScript'>
-                                        location.href='erro.php'
-                                </script>";
-                      }
-                        $conn->close();
-                    
-     }else{
-                    echo "<script language= 'JavaScript'>
-                                        location.href='erro.php'
-                                </script>";
-        
+    
+    if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+    include '../Controller/SimuladoController.php';
+    $objProva = new SimuladoController();
+    $vet = $objProva->RecuperarSimulados($id);
+    $titulo = $vet[0]['TITULO'];
+    $data = $vet[0]['DATA'];
+    $desc = $vet[0]['DESC'];
+    } else {
+        echo "<script language= 'JavaScript'>
+                                            location.href='erro.php'
+                                    </script>";
     }
   ?>
 
@@ -54,7 +44,7 @@
             <div class="input-group">
                 <span class="input-group-addon">Descrição</span>
             </div>
-            <input type="text" class="form-control" placeholder="Senha" name="descricao" required="required" value="<?php echo $descricao;?>"/><br/>
+            <input type="text" class="form-control" placeholder="Senha" name="descricao" required="required" value="<?php echo $desc;?>"/><br/>
 
 
             <input type="submit" class="btn btn-success" name="cadastrar" value="Atualizar"> 

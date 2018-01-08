@@ -7,7 +7,11 @@ Class SimuladoController{
     }
     
     public function ListarSimulados() {
-        listarSimulados();
+        return listarSimulados();
+    }
+    
+     public function RecuperarSimulados($id) {
+        return recuprarSimulados($id);
     }
     
     public function ExcluirSimulado($id) {

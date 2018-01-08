@@ -12,24 +12,46 @@ function cadastrar($nome, $email, $nivel, $senha) {
     $conn->close();
 }
 
-function listar() {
+function listarUsuarios() {
     $conn = F_conect();
     $result = mysqli_query($conn, "Select * from usuario WHERE nivel = 1");
-
-    if (mysqli_num_rows($result)) {
+    
+    $i = 0;
+    $users = array();
+    if (mysqli_num_rows($result)!=0) {
         while ($row = $result->fetch_assoc()) {
-            echo"<tr><td>" . $row['nome'] . "</td>";
-            echo"<td>" . $row['email'] . "</td>";
-            echo"<td><a href=Usuario_editar.php?id=" . $row['idAdmin'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
-                        <a onclick='return confirmar();' href=Usuario_excluir.php?id=" . $row['idAdmin'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
+            $users[$i]['NOME'] = $row['nome'];
+            $users[$i]['EMAIL'] = $row['email'];
+            $users[$i]['ID_USU'] = $row['idAdmin'];
+            $i++;
         }
     }
     $conn->close();
+    return $users;
 }
+
+function RecuperarUsuarios($id) {
+    $conn = F_conect();
+    $result = mysqli_query($conn, "Select * from usuario WHERE idAdmin =".$id);
+    
+    $i = 0;
+    $users = array();
+    if (mysqli_num_rows($result)!=0) {
+        while ($row = $result->fetch_assoc()) {
+            $users[$i]['NOME'] = $row['nome'];
+            $users[$i]['EMAIL'] = $row['email'];
+            $users[$i]['SENHA'] = $row['senha'];
+            $i++;
+        }
+    }
+    $conn->close();
+    return $users;
+}
+
 function editarProfessor($nome, $email, $nivel, $senha, $id) {
     $conn = F_conect();
     $sql = " UPDATE usuario SET  nome='" . $nome . "', email='" . $email . " ', nivel='" .
-            $nivel . "', senha='" . $senha . " ' WHERE idusuario = " . $id;
+            $nivel . "', senha='" . $senha . " ' WHERE idAdmin = " . $id;
 
     if ($conn->query($sql) === TRUE) {
         Alert("Oba!", "Dados atualizados com sucesso", "success");

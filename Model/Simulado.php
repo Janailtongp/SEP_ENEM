@@ -17,17 +17,38 @@ function CadastrarSimulado($titulo, $desc, $data){
 function listarSimulados() {
     $conn = F_conect();
     $result = mysqli_query($conn, "Select * from simulado");
-
-    if (mysqli_num_rows($result)) {
+   
+    $i = 0;
+    $simulados = array();
+    if (mysqli_num_rows($result)!=0) {
         while ($row = $result->fetch_assoc()) {
-            echo"<tr><td>" . $row['titulo'] . "</td>";
-            echo"<td>" . $row['data_'] . "</td>";
-            echo"<td>" . $row['descricao'] . "</td>";
-            echo"<td><a href=Simulado_editar.php?id=" . $row['idSimulado'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
-                        <a onclick='return confirmar();' href=Simulado_excluir.php?id=" . $row['idSimulado'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
+            $simulados[$i]['TITULO'] = $row['titulo'];
+            $simulados[$i]['DATA'] = $row['data_'];
+            $simulados[$i]['DESC'] = $row['descricao'];
+            $simulados[$i]['ID'] = $row['idSimulado'];
+            $i++;
         }
     }
     $conn->close();
+    return $simulados;
+}
+
+function recuprarSimulados($id) {
+    $conn = F_conect();
+    $result = mysqli_query($conn, "Select * from simulado where idSimulado=".$id);
+   
+    $i = 0;
+    $simulados = array();
+    if (mysqli_num_rows($result)!=0) {
+        while ($row = $result->fetch_assoc()) {
+            $simulados[$i]['TITULO'] = $row['titulo'];
+            $simulados[$i]['DATA'] = $row['data_'];
+            $simulados[$i]['DESC'] = $row['descricao'];
+            $i++;
+        }
+    }
+    $conn->close();
+    return $simulados;
 }
 
 function excluirSimulado($id) {

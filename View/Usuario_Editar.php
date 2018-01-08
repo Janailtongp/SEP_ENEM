@@ -3,29 +3,19 @@
     $titulo2 = 'Editar usuário';
     require_once './Topo.phtml';
     
-    if (isset($_GET['id'])){
-                    $id = (int)$_GET['id'];
-                    $conn = F_conect();
-                    $result = mysqli_query($conn, "Select * from usuario where idAdmin=" . $id);
-                      if (mysqli_num_rows($result) >=1){
-                            while ($row = $result->fetch_assoc()) {
-                                $nome=$row['nome'];
-                                $email=$row['email'];
-                                $senha=$row['senha'];
-                             }
-                      }else{
-                         
-                          echo "<script language= 'JavaScript'>
-                                        location.href='erro.php'
-                                </script>";
-                      }
-                        $conn->close();
-                    
-     }else{
-                    echo "<script language= 'JavaScript'>
-                                        location.href='erro.php'
-                                </script>";
-        
+    
+    if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+    include '../Controller/UsuarioController.php';
+    $objProva = new UsuarioController();
+    $vet = $objProva->RecuperarProfessores($id);
+    $nome = $vet[0]['NOME'];
+    $email = $vet[0]['EMAIL'];
+    $senha = $vet[0]['SENHA'];
+    } else {
+        echo "<script language= 'JavaScript'>
+                                            location.href='erro.php'
+                                    </script>";
     }
   ?>
 

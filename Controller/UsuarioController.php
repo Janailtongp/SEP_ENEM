@@ -11,7 +11,11 @@ Class UsuarioController{
     }
     
     public function ListarProfessores() {
-        listar();
+        return listarUsuarios();
+    }
+   
+     public function RecuperarProfessores($id) {
+        return RecuperarUsuarios($id);
     }
     
     public function ExcluirUsuario($id) {
