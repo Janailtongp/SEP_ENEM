@@ -16,7 +16,7 @@ function CadastrarSimulado($titulo, $desc, $data){
 
 function listarSimulados() {
     $conn = F_conect();
-    $result = mysqli_query($conn, "Select * from simulado");
+    $result = mysqli_query($conn, "Select * from simulado order by data_ desc");
    
     $i = 0;
     $simulados = array();
@@ -69,7 +69,7 @@ function editarSimulado($titulo, $data, $descricao,$id) {
             $descricao . "' WHERE idSimulado = " . $id;
 
     if ($conn->query($sql) === TRUE) {
-        Alert("Oba!", "Simulado atualizados com sucesso", "success");
+        Alert("Oba!", "Simulado atualizado com sucesso", "success");
         echo "<a href='Simulado_listar.php'> Voltar a lista de simulados</a>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

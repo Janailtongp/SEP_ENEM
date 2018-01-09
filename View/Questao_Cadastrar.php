@@ -16,6 +16,16 @@ if (isset($_POST["cadastrar"])) {
 <br />
 <form action="" method="post">
     <div class="input-group">
+                <span class="input-group-addon">Área</span>
+            </div>
+            <select name="disciplina" class="form-control" >
+                <option value="1" selected="selected">Ciências da Natureza e suas Tecnologias</option>
+                <option value="2">Ciências Humanas e suas Tecnologias</option>
+                <option value="3">Linguagens, Códigos e suas Tecnologias</option>
+                <option value="4">Matemática e suas Tecnologias</option>
+            </select><br/>
+            
+    <div class="input-group">
         <span class="input-group-addon">Enuncuado</span>
     </div> 
     <textarea class="ckeditor" name="enunciado" required="required"></textarea><br/>

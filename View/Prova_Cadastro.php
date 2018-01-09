@@ -19,10 +19,15 @@ require_once './Topo.phtml';
         <input type="text" class="form-control" placeholder="Título" name="titulo" required=""/><br/>
 
 
-         <div class="input-group">
-            <span class="input-group-addon">Assunto</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Assunto" name="assunto" required=""/><br/>
+          <div class="input-group">
+                <span class="input-group-addon">Área</span>
+            </div>
+            <select name="assunto" class="form-control" >
+                <option value="1" selected="selected">Ciências da Natureza e suas Tecnologias</option>
+                <option value="2">Ciências Humanas e suas Tecnologias</option>
+                <option value="3">Linguagens, Códigos e suas Tecnologias</option>
+                <option value="4">Matemática e suas Tecnologias</option>
+            </select><br/>
         
         
         <div class="input-group">

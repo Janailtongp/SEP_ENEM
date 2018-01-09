@@ -100,7 +100,7 @@ include './Topo.phtml';
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="blank.html" >
+            <a href="Assunto_Cadastro.php" >
                 <i class="fa fa-wechat fa-4x"></i>
                 <h4>Cadastrar Assunto</h4>
             </a>
@@ -111,7 +111,7 @@ include './Topo.phtml';
     
      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
         <div class="div-square">
-            <a href="Usuario_listar.php" >
+            <a href="Assunto_listar.php" >
                 <i class="fa fa-list fa-4x"></i>
                 <h4>Listar Assuntos</h4>
             </a>

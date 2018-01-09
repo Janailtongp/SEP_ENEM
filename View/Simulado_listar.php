@@ -26,10 +26,12 @@ require_once './Topo.phtml';
             if($tamanho > 0){
                 for($i =0; $i<$tamanho; $i++){
                     echo"<tr><td>" . $vetor[$i]['TITULO']  . "</td>";
-                    echo"<td>" .     $vetor[$i]['DATA'] . "</td>";
+                    $data = explode("-", $vetor[$i]['DATA']);
+                    echo"<td>".$data[2]."/".$data[1]."/".$data[0] . "</td>";
                     echo"<td>" .     $vetor[$i]['DESC'] . "</td>";
                     echo"<td><a href=Simulado_editar.php?id=" . $vetor[$i]['ID'] . "><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
-                                <a onclick='return confirmar();' href=Simulado_excluir.php?id=" . $vetor[$i]['ID'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>";
+                                <a onclick='return confirmar();' href=Simulado_excluir.php?id=" . $vetor[$i]['ID'] . "><i class='fa fa-trash-o' aria-hidden='true'></i></a> "
+                              ."<a href=Simulado_AddProva.php?id=" . $vetor[$i]['ID'] . "><i class='fa fa-file-powerpoint-o' aria-hidden='true'></i></a></td></tr>";
                 }
             }    
             ?>
