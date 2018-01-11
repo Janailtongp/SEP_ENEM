@@ -11,6 +11,7 @@
     $vet = $objAssunto->RecuperarAssunto($id);
     $titulo = $vet[0]['TITULO'];
     $Area = $vet[0]['AREA'];
+    $area = NomeArea($Area);
     } else {
         echo "<script language= 'JavaScript'>
                                             location.href='erro.php'
@@ -29,21 +30,7 @@
             <div class="input-group">
                 <span class="input-group-addon">Título</span>
             </div>
-            <input type="text" class="form-control" placeholder="Nome" name="titulo" required="required" value="<?php echo $titulo;?>"/><br/>
-
-            <?php 
-            if($Area == 1){
-                           $area = "Ciências da Natureza e suas Tecnologias";
-                   }else if ($Area == 2){
-                           $area = "Ciências Humanas e suas Tecnologias";
-                   }else if ($Area == 3){
-                           $area = "Linguagens, Códigos e suas Tecnologias";
-                   }else if ($Area == 4){
-                           $area = "Matemática e suas Tecnologias";
-                   }
-            
-            ?>
-             
+            <input type="text" class="form-control" placeholder="Nome" name="titulo" required="required" value="<?php echo $titulo;?>"/><br/>             
             <div class="input-group">
                 <span class="input-group-addon">Área</span>
             </div>

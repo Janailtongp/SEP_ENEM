@@ -76,3 +76,24 @@ function editarSimulado($titulo, $data, $descricao,$id) {
     }
     $conn->close();
 }
+
+function listarProvas_simulado($idSimulado){
+    $conn = F_conect();
+    $result = mysqli_query($conn, "Select * from prova WHERE Simulado_idSimulado =" . $idSimulado);
+    $i = 0;
+    $provas = array();
+    if (mysqli_num_rows($result)!=0) {
+        while ($row = $result->fetch_assoc()) {
+            $provas[$i]['TITULO'] = $row['titulo'];
+            $provas[$i]['ASSUNTO'] = NomeArea($row['assunto']);
+            $result2 = mysqli_query($conn, "Select titulo from simulado WHERE idSimulado =" . $row['Simulado_idSimulado']);
+            $titulo_simulado = $result2->fetch_assoc();
+            $provas[$i]['ID_SIMULADO'] = $titulo_simulado['titulo'];
+            $provas[$i]['ID_PROVA'] = $row['idProva'];
+            $i++;
+        }
+    }
+    $conn->close();
+    return $provas;
+     
+ }

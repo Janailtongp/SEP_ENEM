@@ -65,3 +65,18 @@ function testLogado() {
         header('Location: ../');
     }
 }
+
+function NomeArea($Area) {
+    if ($Area == 1) {
+        $area = "Ciências da Natureza e suas Tecnologias";
+    } else if ($Area == 2) {
+        $area = "Ciências Humanas e suas Tecnologias";
+    } else if ($Area == 3) {
+        $area = "Linguagens, Códigos e suas Tecnologias";
+    } else if ($Area == 4) {
+        $area = "Matemática e suas Tecnologias";
+    }else{
+        $area = "Área não definida";
+    }
+    return $area;
+}

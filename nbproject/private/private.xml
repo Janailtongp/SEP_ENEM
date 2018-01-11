@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/sep_enem/View/Assunto_Cadastro.php</file>
+            <file>file:/C:/xampp/htdocs/sep_enem/View/Questao_Cadastrar.php</file>
+            <file>file:/C:/xampp/htdocs/sep_enem/View/Assunto_listar.php</file>
+            <file>file:/C:/xampp/htdocs/sep_enem/Controller/AssuntoController.php</file>
+            <file>file:/C:/xampp/htdocs/sep_enem/Model/Assunto.php</file>
+            <file>file:/C:/xampp/htdocs/sep_enem/View/Prova_Cadastro.php</file>
+            <file>file:/C:/xampp/htdocs/sep_enem/View/Assunto_editar.php</file>
+        </group>
     </open-files>
 </project-private>

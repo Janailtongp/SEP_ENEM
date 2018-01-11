@@ -15,14 +15,16 @@ function CadastrarProva($titulo, $asaunto, $Simulado_idSimulado, $usuario_idAdmi
 
 function listarProvas($IDUsuario) {
     $conn = F_conect();
-    $result = mysqli_query($conn, "Select * from prova WHERE usuario_idAdmin=" . $IDUsuario);
+    $result = mysqli_query($conn, "Select * from prova  order by Simulado_idSimulado desc");
     $i = 0;
     $provas = array();
     if (mysqli_num_rows($result)!=0) {
         while ($row = $result->fetch_assoc()) {
             $provas[$i]['TITULO'] = $row['titulo'];
-            $provas[$i]['ASSUNTO'] = $row['assunto'];
-            $provas[$i]['ID_SIMULADO'] = $row['Simulado_idSimulado'];
+            $provas[$i]['ASSUNTO'] = NomeArea($row['assunto']);
+            $result2 = mysqli_query($conn, "Select titulo from simulado WHERE idSimulado =" . $row['Simulado_idSimulado']);
+            $titulo_simulado = $result2->fetch_assoc();
+            $provas[$i]['ID_SIMULADO'] = $titulo_simulado['titulo'];
             $provas[$i]['ID_PROVA'] = $row['idProva'];
             $i++;
         }
@@ -44,9 +46,9 @@ function excluirProva($id){
 }
 
 function ProvaEditavel($idAdmin, $idProva) {
-
+    $idAdmin = null; // Caso queira filtrar por Usuário
     $conn = F_conect();
-    $result = mysqli_query($conn, "Select * from prova where idProva=" . $idProva . " and usuario_idAdmin =" . $idAdmin);
+    $result = mysqli_query($conn, "Select * from prova where idProva=" . $idProva);
     $i = 0;
     $prova = array();
     while ($row = $result->fetch_assoc()) {

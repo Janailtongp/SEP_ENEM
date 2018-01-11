@@ -9,8 +9,8 @@ require_once './Topo.phtml';
             <thead>
                 <tr>
                     <th>Título</th>
-                    <th>Assunto</th>
-                    <th>ID simulado</th>
+                    <th>Área</th>
+                    <th>Simulado</th>
                     <th></th>
                 </tr>
             </thead>

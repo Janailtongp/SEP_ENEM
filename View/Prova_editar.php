@@ -36,9 +36,16 @@ if(isset($_POST['cadastrar'])){
 
          <div class="input-group">
             <span class="input-group-addon">Assunto</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Assunto" name="assunto" value="<?php echo $assunto;?>"/><br/>
-        
+        </div><?php
+        $area = NomeArea($assunto);
+        ?>
+        <select name="assunto" class="form-control" >
+                <option value="<?php echo $assunto;?>" selected="selected"><?php echo $area;?></option>
+                <option value="1">Ciências da Natureza e suas Tecnologias</option>
+                <option value="2">Ciências Humanas e suas Tecnologias</option>
+                <option value="3">Linguagens, Códigos e suas Tecnologias</option>
+                <option value="4">Matemática e suas Tecnologias</option>
+            </select><br/>
         
         <div class="input-group">
             <span class="input-group-addon">Simulado de destino</span>

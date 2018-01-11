@@ -24,4 +24,8 @@ Class SimuladoController{
         
     }
     
+    public function ListarProvas_simulado($idSimulado) {
+        return listarProvas_simulado($idSimulado);
+    }
+    
 }    
