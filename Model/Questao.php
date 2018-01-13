@@ -1,8 +1,8 @@
 <?php
 
-function cadastrarQuestao($enunciado){
+function cadastrarQuestao($enunciado,$disciplina,$assunto){
     $conn = F_conect();
-    $sql = "INSERT INTO questao(enunciado) VALUES('" . $enunciado . "')";
+    $sql = "INSERT INTO questao(enunciado, disciplina, assunto) VALUES('" . $enunciado . "','" . $disciplina . "','" . $assunto . "')";
     if ($conn->query($sql) == TRUE) {
         //  Alert("Oba!", "Questão cadastrada com sucesso <br/> <a href='Questao_listar.php'> Voltar ao menu</a>", "success");
     } else {
@@ -54,9 +54,9 @@ function resgatarQuestao($id) {
     return $vetor;
 }
 
-function editarQuestao($enunciado, $idQuestao) {
+function editarQuestao($enunciado, $disciplina, $assunto, $idQuestao) {
     $conn = F_conect();
-    $sql = "UPDATE questao SET enunciado = '" . $enunciado . "' WHERE idQuestao =" . $idQuestao;
+    $sql = "UPDATE questao SET enunciado = '" . $enunciado . "', disciplina ='".$disciplina."', assunto='".$assunto."'  WHERE idQuestao =" . $idQuestao;
     $bool = false;
     if ($conn->query($sql) == TRUE) {
         $bool = true;
@@ -104,14 +104,17 @@ function excluirQuestao($id) {
 
 function listarQuestao() {
     $conn = F_conect();
-    $result = mysqli_query($conn, "Select left(enunciado, 200)KK, disciplina, idQuestao, enunciado from questao");
+    $result = mysqli_query($conn, "Select left(enunciado, 200)KK, disciplina, idQuestao, assunto, enunciado from questao");
     $vetor = array();
     $i=0;
     if (mysqli_num_rows($result)) {
         while ($row = $result->fetch_assoc()) {
             $vetor[$i]['idQuestao'] = $row['idQuestao'];
             $vetor[$i]['preview'] = $row['KK'];
-            $vetor[$i]['disciplina'] = $row['disciplina'];
+            $vetor[$i]['disciplina'] = NomeArea($row['disciplina']);
+                $result2 =  mysqli_query($conn, "Select titulo from assunto where IdAssunto =".$row['assunto']);
+                $row2 = $result2->fetch_assoc();
+            $vetor[$i]['assunto'] = $row2['titulo'];
             $vetor[$i]['enunciado'] = $row['enunciado'];
             $i++;
         }
