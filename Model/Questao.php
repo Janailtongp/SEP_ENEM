@@ -122,3 +122,92 @@ function listarQuestao() {
     $conn->close();
     return $vetor;
 }
+
+// Questões vinculadas a uma devida prova
+function existe_Quest_prova($id){
+     $conn = F_conect();
+     $result = mysqli_query($conn,'SELECT * FROM questao_prova');
+     while($row = mysqli_fetch_assoc($result)){
+              if($row['Questao_idQuestao'] == $id){    
+                  $conn->close();
+                  return 1;
+              }
+     }
+    $conn->close();
+    return 0;
+}
+
+function listarQuestao_area($idArea) {
+    $conn = F_conect();
+    $result = mysqli_query($conn, "Select left(enunciado, 200)KK, disciplina, idQuestao, assunto, enunciado from questao WHERE disciplina=".$idArea);
+    $vetor = array();
+    $i=0;
+    if (mysqli_num_rows($result)) {
+        while ($row = $result->fetch_assoc()) {
+            $vetor[$i]['idQuestao'] = $row['idQuestao'];
+            $vetor[$i]['preview'] = $row['KK'];
+            $vetor[$i]['disciplina'] = NomeArea($row['disciplina']);
+                $result2 =  mysqli_query($conn, "Select titulo from assunto where IdAssunto =".$row['assunto']);
+                $row2 = $result2->fetch_assoc();
+            $vetor[$i]['assunto'] = $row2['titulo'];
+            $vetor[$i]['enunciado'] = $row['enunciado'];
+            $i++;
+        }
+    }
+    $conn->close();
+    return $vetor;
+}
+
+function listarQuestao_prova($idprova) {
+    $conn = F_conect();
+    $result = mysqli_query($conn, "Select left(q.enunciado, 200)KK, q.disciplina, q.idQuestao, q.assunto, q.enunciado from questao q, questao_prova qp WHERE q.idQuestao = qp.Questao_idQuestao AND qp.Prova_idProva =".$idprova);
+    $vetor = array();
+    $i=0;
+    if (mysqli_num_rows($result)) {
+        while ($row = $result->fetch_assoc()) {
+            $vetor[$i]['idQuestao'] = $row['idQuestao'];
+            $vetor[$i]['preview'] = $row['KK'];
+            $vetor[$i]['disciplina'] = NomeArea($row['disciplina']);
+                $result2 =  mysqli_query($conn, "Select titulo from assunto where IdAssunto =".$row['assunto']);
+                $row2 = $result2->fetch_assoc();
+            $vetor[$i]['assunto'] = $row2['titulo'];
+            $vetor[$i]['enunciado'] = $row['enunciado'];
+            $i++;
+        }
+    }
+    $conn->close();
+    return $vetor;
+}
+
+function Cadastrar_Quest_Prova($idProva, $idQuest){
+    $conn = F_conect();
+    $sucess = 0 ;
+    $rep = 0;
+    for ($i = 0; $i < count($idQuest); $i++) {
+        if(!existe_Quest_prova($idQuest[$i])){
+           $sql = "INSERT INTO questao_prova(Questao_idQuestao, Prova_idProva)
+            VALUES(".$idQuest[$i].",".$idProva.")";
+            if($conn->query($sql) == TRUE){
+               $sucess++;
+            } 
+        }else{
+            $rep++;
+        }
+    }
+    $conn->close();  
+    if($sucess > 0){
+    Alert("Oba!", "[".$sucess."] questão(ões) adicionadas com sucesso<br/> <a href='Questoes_PorProva.php?id=".$idProva."'> Lista de questões para essa prova</a>", "success");
+    }
+    if($rep > 0){
+        Alert("Ops!", "[".$rep."] questão(ões) repetidas não foram adicionadas<br/> <a href='Questoes_PorProva.php?id=".$idProva."'> Lista de questões para essa prova</a>", "danger");
+    
+    }
+}
+
+function excluirQuestao_prova($idprova, $idQuest){
+    $conn = F_conect();
+    $sql = "DELETE FROM questao_prova WHERE (Questao_idQuestao =".$idQuest." AND Prova_idProva=".$idprova.")";
+    $conn->query($sql);
+    $conn->close();
+}
+

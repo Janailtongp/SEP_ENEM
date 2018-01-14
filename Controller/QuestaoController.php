@@ -35,5 +35,20 @@ class QuestaoController{
     public function ListarQestoes() {
         return listarQuestao();
     }
+    // Relação Questão - Prova
+    public function ListarQestoes_Area($idArea) {
+        return listarQuestao_area($idArea);
+    }
+    public function ListarQestoes_Prova($idprova) {
+        return listarQuestao_prova($idprova);
+    }
     
+    public function CadastrarQuest_prova($idProva, $idQuest){
+        Cadastrar_Quest_Prova($idProva, $idQuest);
+    }
+    
+    public function ExcluirQuestao_prova($idprova, $idQuest) {
+      excluirQuestao_prova($idprova, $idQuest);
+      header( "Location: Questoes_PorProva.php?id=".$idprova);
+    }
 }

@@ -40,7 +40,8 @@ require_once './Topo.phtml';
                     echo"<tr><td>" . $vetor[$i]['TITULO']  . "</td>";
                     echo"<td>" .     $vetor[$i]['ASSUNTO'] . "</td>";
                     echo"<td>" .     $vetor[$i]['ID_SIMULADO'] . "</td>";
-                    echo"<td><a href=Questoes_PorProva.php?id=" . $vetor[$i]['ID_PROVA'] . "><i class='fa fa-file-powerpoint-o' aria-hidden='true'></i></a></td></tr>";
+                    echo"<td><a href=Questoes_PorProva.php?id=" . $vetor[$i]['ID_PROVA'] ."><i class='fa fa-file-text-o' aria-hidden='true'></i> </a>";
+                    echo"<a href=Questao_selecionar.php?id=" . $vetor[$i]['ID_PROVA'] . "&area=".$vetor[$i]['ASSUNTO_ID']."><i class='fa fa-plus-square-o' aria-hidden='true'></i></a></td></tr>";
                 }
             }    
             ?>

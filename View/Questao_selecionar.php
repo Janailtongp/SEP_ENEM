@@ -2,16 +2,31 @@
 $titulo1 = 'Prova - Adicionar Questões';
 $titulo2 = 'Prova - Adicionar Questões';
 require_once './Topo.phtml';
-require '../Controller/QuestaoController.php';
-$obj = new QuestaoController();
-$vetor = $obj->ListarQestoes();
-$tamanho = count($vetor);
 
-
+if (isset($_GET['id']) AND isset($_GET['area'])) {
+        $id = (int) $_GET['id'];
+        $area = (int) $_GET['area'];
+        require '../Controller/QuestaoController.php';
+        $obj = new QuestaoController();
+        $vetor = $obj->ListarQestoes_Area($area);
+        $tamanho = count($vetor);
+     } else {
+        echo "<script language= 'JavaScript'>
+                                                location.href='erro.php'
+                                        </script>";
+    }
+    if(isset($_POST['cadastrar'])){
+        if (isset($_POST['Quest'])) {
+            $obj->CadastrarQuest_prova($id, $_POST['Quest']);
+        }else{
+            Alert("Ops!", "Nenhuma questão selecionada :(", "danger");
+        }
+    }
+    
 ?>
 
 <div class="col-md-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-    <form action="teste.php" method="post">
+    <form action="" method="post">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>

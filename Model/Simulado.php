@@ -86,6 +86,7 @@ function listarProvas_simulado($idSimulado){
         while ($row = $result->fetch_assoc()) {
             $provas[$i]['TITULO'] = $row['titulo'];
             $provas[$i]['ASSUNTO'] = NomeArea($row['assunto']);
+            $provas[$i]['ASSUNTO_ID'] = $row['assunto'];
             $result2 = mysqli_query($conn, "Select titulo from simulado WHERE idSimulado =" . $row['Simulado_idSimulado']);
             $titulo_simulado = $result2->fetch_assoc();
             $provas[$i]['ID_SIMULADO'] = $titulo_simulado['titulo'];
