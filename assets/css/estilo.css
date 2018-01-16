@@ -1,0 +1,70 @@
+.area{
+	font-size: 25px;
+	width: 100%;
+	border-bottom: 3px solid;
+	border-top:  3px solid;
+	text-align: center;
+}
+.div-em-colunas {
+    -webkit-column-count:2; /* Chrome, Safari, Opera */
+    -moz-column-count:2;    /* Firefox */
+    column-count:2;         /* padrão */	
+}
+.div-em-colunas{
+	border: 10px groove; 
+	border-radius: 10px;
+	clear: both;
+	
+}
+.questao{
+	border: 3px groove;
+	border-radius: 10px;
+	text-align: justify;
+	margin-left:3px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+	
+}
+.questao p{
+	margin-left: 3px;
+	margin-right:3px;
+	
+}
+.titulo{
+	border-bottom: 5px dashed;
+	width: 100%;
+}
+.alternativa span{
+	font-size: 16px;
+	font-family: Arial bold;
+	background-color: black;
+	color: #FFFFFF;
+	padding-right: 3px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	border-radius: 50%;
+    border:3px solid #000;
+	clear: both;
+	float: left;
+	margin-right: 7px;
+}
+.alternativa p{
+	padding-top: 5px;
+}
+
+.gabarito h1{
+	float: left;
+	margin-top: 6px;
+	margin-left: 4px;
+	
+}
+
+.gabarito p{
+	float: left;
+        margin-top: 12px;
+}
+.gabarito span{
+	float: left;
+	clear: both;
+	margin-bottom: -30px;
+}
